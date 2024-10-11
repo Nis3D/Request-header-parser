@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Header Parser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Request Header Parser Microservice</h1>
+        <p>Click the button to retrieve your IP address, language, and software information.</p>
+        <button id='get-info-btn'>Get Info</button>
+        
+        <div class="result" id="result">
+            <h3>Your Information:</h3>
+            <p><strong>IP Address:</strong> <span id="ip"></span></p>
+            <p><strong>Language:</strong> <span id="language"></span></p>
+            <p><strong>Software:</strong> <span id="software"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('get-info-btn').addEventListener('click', function () {
+            fetch('/api/whoami')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip').innerText = data.ipaddress;
+                    document.getElementById('language').innerText = data.language;
+                    document.getElementById('software').innerText = data.software;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
