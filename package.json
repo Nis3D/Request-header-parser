@@ -1,0 +1,16 @@
+{
+  "name": "request-header-parser",
+  "version": "1.0.0",
+  "description": "This is a request header parser microservice project to request given API and returns the JSON objects with a preferred IP address, language and software with their respective keys.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "expres": "^0.0.5",
+    "express": "^4.21.1"
+  }
+}
