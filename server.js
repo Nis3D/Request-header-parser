@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const cors = require('cors');
+
 
 // Set the port for the application
 const PORT = process.env.PORT || 3000;
 
-// http://expressjs.com/en/starter/static-files.html
+// Enable CORS for cross-origin requests
+app.use(cors());
+
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
@@ -21,25 +25,25 @@ app.get('/api/hello', function (req, res) {
 //middleware to handle JSON requets
 app.use(express.json());
 
-// Route to handle the /api/whoami request
-app.get('/api/whoami', (req, res) => {
+// // Route to handle the /api/whoami request
+// app.get('/api/whoami', (req, res) => {
 
-    // Getting the IP address from the request
-    const ipaddress = req.ip || req.headers['x-forwarded-for'] || req.remoteAddress;
+//     // Getting the IP address from the request
+//     const ipaddress = req.ip || req.headers['x-forwarded-for'] || req.remoteAddress;
 
-    // Getting the language from the 'Accept-Language' header
-    const language = req.headers['accept-language'].split(',')[0];
+//     // Getting the language from the 'Accept-Language' header
+//     const language = req.headers['accept-language'].split(',')[0];
 
-    // Getting the user-agent from the 'User-Agent' header
-    const software = req.headers['user-agent'];
+//     // Getting the user-agent from the 'User-Agent' header
+//     const software = req.headers['user-agent'];
 
-    // Respond with a JSON object
-    res.json({
-         ipaddress,
-         language,
-         software 
-    });
-});
+//     // Respond with a JSON object
+//     res.json({
+//          ipaddress,
+//          language,
+//          software 
+//     });
+// });
 
 
 // Start the server
